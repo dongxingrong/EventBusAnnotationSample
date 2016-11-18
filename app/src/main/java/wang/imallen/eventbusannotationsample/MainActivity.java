@@ -39,9 +39,13 @@ public class MainActivity extends AppCompatActivity {
 
         initView();
         Log.d(TAG,"start of addIndex");
-        EventBus eventBus=EventBus.builder().addIndex(new MyEventBusIndex()).build();
+//         EventBus eventBus=EventBus.builder().addIndex(new MyEventBusIndex()).build();
+        
+        EventBus.builder().addIndex(new MyEventBusIndex()).installDefaultEventBus();
+        EventBus.getDefault().register(this);
+        
         Log.d(TAG,"end of addIndex");
-        eventBus.register(this);
+//         eventBus.register(this);
     }
 
     @Subscribe(threadMode= ThreadMode.MAIN)
